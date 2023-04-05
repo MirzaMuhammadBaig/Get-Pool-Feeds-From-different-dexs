@@ -13,130 +13,6 @@ query {
       timestamp
     }
   }
-  bundles {
-    bnbPrice
-    id
-  }
-  burns {
-    id
-    feeTo
-    feeLiquidity
-    amountUSD
-    amount1
-    amount0
-    liquidity
-    logIndex
-    needsComplete
-    sender
-    timestamp
-    to
-    pair {
-      name
-      token0 {
-        name
-        symbol
-        totalTransactions
-      }
-      token1 {
-        name
-        symbol
-        totalTransactions
-      }
-      totalTransactions
-      token0Price
-      token1Price
-    }
-  }
-  mints {
-    id
-    feeTo
-    feeLiquidity
-    amountUSD
-    amount1
-    amount0
-    liquidity
-    logIndex
-    sender
-    timestamp
-    to
-    pair {
-      name
-      token0 {
-        name
-        symbol
-        totalTransactions
-      }
-      token1 {
-        name
-        symbol
-        totalTransactions
-      }
-      token0Price
-      token1Price
-      totalTransactions
-    }
-  }
-  pairDayDatas {
-    dailyTxns
-    dailyVolumeToken0
-    dailyVolumeToken1
-    dailyVolumeUSD
-    date
-    pairAddress
-    reserve0
-    reserve1
-    reserveUSD
-    totalSupply
-    token0 {
-      name
-      symbol
-    }
-    token1 {
-      name
-      symbol
-    }
-  }
-  pairHourDatas {
-    hourStartUnix
-    hourlyTxns
-    hourlyVolumeToken0
-    hourlyVolumeToken1
-    hourlyVolumeUSD
-    id
-    reserve0
-    reserve1
-    reserveUSD
-    totalSupply
-    pair {
-      block
-      id
-      name
-      reserve0
-      reserve1
-      reserveBNB
-      reserveUSD
-      timestamp
-      token0Price
-      token1Price
-      totalSupply
-      totalTransactions
-      trackedReserveBNB
-      untrackedVolumeUSD
-      volumeToken0
-      volumeToken1
-      volumeUSD
-      token0 {
-        name
-        symbol
-        totalTransactions
-      }
-      token1 {
-        name
-        symbol
-        totalTransactions
-      }
-    }
-  }
   pairs {
     id
     block
@@ -167,89 +43,11 @@ query {
       sender
       timestamp
       to
-    }
-  }
-  pancakeDayDatas {
-    dailyVolumeBNB
-    dailyVolumeUSD
-    dailyVolumeUntracked
-    date
-    id
-    totalLiquidityBNB
-    totalLiquidityUSD
-    totalTransactions
-    totalVolumeBNB
-    totalVolumeUSD
-  }
-  pancakeFactories {
-    id
-    totalLiquidityBNB
-    totalLiquidityUSD
-    totalPairs
-    totalTransactions
-    totalVolumeBNB
-    totalVolumeUSD
-    untrackedVolumeUSD
-  }
-  swaps {
-    amount0In
-    amount0Out
-    amount1In
-    amount1Out
-    amountUSD
-    from
-    id
-    logIndex
-    sender
-    timestamp
-    pair {
-      token0 {
-        name
-        symbol
-        totalTransactions
+      transaction {
+        block
+        timestamp
       }
-      token1 {
-        name
-        symbol
-        totalTransactions
-      }
-      totalTransactions
     }
-  }
-  tokenDayDatas {
-    dailyTxns
-    dailyVolumeBNB
-    dailyVolumeToken
-    dailyVolumeUSD
-    date
-    id
-    priceUSD
-    totalLiquidityBNB
-    totalLiquidityToken
-    totalLiquidityUSD
-    token {
-      name
-      symbol
-      totalTransactions
-    }
-  }
-  tokens {
-    decimals
-    derivedBNB
-    derivedUSD
-    id
-    name
-    symbol
-    totalLiquidity
-    totalTransactions
-    tradeVolume
-    tradeVolumeUSD
-    untrackedVolumeUSD
-  }
-  transactions {
-    block
-    id
-    timestamp
     burns {
       amount0
       amount1
@@ -264,23 +62,8 @@ query {
       timestamp
       to
       transaction {
-        id
-      }
-    }
-    mints {
-      amount0
-      amount1
-      amountUSD
-      feeLiquidity
-      feeTo
-      id
-      liquidity
-      logIndex
-      sender
-      timestamp
-      to
-      transaction {
-        id
+        block
+        timestamp
       }
     }
     swaps {
@@ -288,16 +71,39 @@ query {
       amount0Out
       amount1In
       amount1Out
-      from
       amountUSD
+      from
       id
       logIndex
       sender
       timestamp
       to
       transaction {
-        id
+        block
+        timestamp
       }
+    }
+    token0 {
+      decimals
+      derivedBNB
+      derivedUSD
+      name
+      symbol
+      totalLiquidity
+      totalTransactions
+      tradeVolume
+      tradeVolumeUSD
+    }
+    token1 {
+      decimals
+      derivedBNB
+      derivedUSD
+      name
+      symbol
+      totalLiquidity
+      totalTransactions
+      tradeVolume
+      tradeVolumeUSD
     }
   }
 }

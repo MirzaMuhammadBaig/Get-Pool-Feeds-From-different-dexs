@@ -1,5 +1,3 @@
-console.log("Fetching data from balancer....");
-
 import fetch from "node-fetch";
 import fs from "fs";
 
@@ -7,94 +5,15 @@ const url = "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer";
 
 const query = `
 query {
-  balancers {
-    id
-    poolCount
-    totalLiquidity
-    totalSwapVolume
-    totalSwapFee
-    txCount
-    pools {
-      active
-      cap
-      controller
-      createTime
-      finalized
-      holdersCount
-      id
-      liquidity
-      name
-      publicSwap
-      swapFee
-      swapsCount
-      symbol
-      tx
-      totalWeight
-      totalSwapVolume
-      totalSwapFee
-      totalShares
-      tokensList
-      tokensCount
-      tokens {
-        name
-        id
-        symbol
-        address
-      }
-    }
-  }
-  poolShares {
-    id
-    balance
-    poolId {
-      cap
-      active
-      createTime
-      controller
-      holdersCount
-      id
-      liquidity
-      name
-      publicSwap
-      swapFee
-      swapsCount
-      symbol
-      tokensCount
-      tokensList
-      tokens {
-        name
-        symbol
-        address
-        id
-      }
-      totalShares
-      totalSwapFee
-      totalSwapVolume
-      totalWeight
-      tx
-    }
-  }
-  poolTokens {
-    address
-    name
-    symbol
-  }
   pools {
-    active
+    createTime
     cap
     controller
-    createTime
-    crp
-    crpController
     exitsCount
     finalized
     holdersCount
-    id
-    joinsCount
     liquidity
     name
-    publicSwap
-    rights
     swapFee
     swapsCount
     symbol
@@ -103,79 +22,18 @@ query {
     totalShares
     totalSwapFee
     totalSwapVolume
-    totalWeight
     tx
-    shares {
-      id
-      balance
-    }
     swaps {
-      id
-      poolLiquidity
-      poolTotalSwapFee
-      poolTotalSwapVolume
-      timestamp
-      tokenAmountIn
-      tokenAmountOut
-      tokenIn
-      tokenInSym
-      tokenOut
-      tokenOutSym
-      value
-    }
-  }
-  swaps {
-    id
-    feeValue
-    caller
-    poolAddress {
-      tx
-      id
-      name
-      symbol
-    }
-    poolLiquidity
-    timestamp
-    tokenIn
-    tokenOut
-  }
-  tokenPrices {
-    id
-    decimals
-    name
-    poolLiquidity
-    poolTokenId
-    price
-    symbol
-  }
-  transactions {
-    id
-    gasUsed
-    gasPrice
-    event
-    block
-    action
-    sender
-    timestamp
-    tx
-    poolAddress {
-      id
-      name
-      liquidity
-      symbol
-      tx
-    }
-  }
-  users {
-    id
-    sharesOwned {
-      id
-      balance
-    }
-    swaps {
-      id
-      feeValue
       caller
+      feeValue
+      poolAddress {
+        symbol
+        name
+        active
+        id
+        liquidity
+        tokensList
+      }
       poolLiquidity
       poolTotalSwapFee
       poolTotalSwapVolume
@@ -185,26 +43,40 @@ query {
       tokenIn
       tokenInSym
       tokenOut
-      tokenOutSym
       value
-    }
-    txs {
-      id
-      gasUsed
-      gasPrice
-      event
-      block
-      action
-      sender
-      timestamp
-      tx
-      poolAddress {
-        id
-      }
       userAddress {
+        txs {
+          tx
+          block
+          timestamp
+        }
         id
       }
     }
+    tokens {
+      address
+      balance
+      decimals
+      name
+      symbol
+      poolId {
+        name
+        symbol
+        active
+        id
+        liquidity
+        swapFee
+        totalSwapFee
+        totalSwapVolume
+        tx
+        swapsCount
+      }
+    }
+    publicSwap
+    crp
+    crpController
+    id
+    active
   }
 }
 `;
@@ -219,14 +91,14 @@ async function getBalancerData() {
       headers: { "Content-Type": "application/json" },
     };
     const response = await fetch(url, options);
-    const {data} = await response.json();
+    const { data } = await response.json();
     responseData = data; // Initialize global variable with response data
     console.log(responseData);
 
     // Write response data to file
-    const fileName = "balancer_data.json";
-    fs.writeFileSync(fileName, JSON.stringify(responseData));
-    console.log(`Data written to file: ${fileName}`);
+    // const fileName = "balancer_data.json";
+    // fs.writeFileSync(fileName, JSON.stringify(responseData));
+    // console.log(`Data written to file: ${fileName}`);
   } catch (error) {
     console.log("error", error);
   }
