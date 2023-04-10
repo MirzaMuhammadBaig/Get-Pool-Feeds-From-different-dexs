@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import fs from "fs";
 
 const url = "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer";
 
