@@ -16,8 +16,8 @@ async function run(){
         //A-M, N-Z
         await admin.createTopics({
             "topics": [{
-                "topic" : "Feeds",
-                "numPartitions": 2
+                "topic" : "pancakeswap",
+                "numPartitions": 4
             }]
         })
         console.log("Created Successfully!")
@@ -30,6 +30,4 @@ async function run(){
     finally{
         process.exit(0);
     }
-
-
 }
