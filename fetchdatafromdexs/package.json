@@ -1,9 +1,0 @@
-{
-  "type": "module",
-  "dependencies": {
-    "@apollo/client": "^3.7.10",
-    "graphql": "^16.6.0",
-    "graphql-request": "^5.2.0",
-    "node-fetch": "^3.3.1"
-  }
-}
