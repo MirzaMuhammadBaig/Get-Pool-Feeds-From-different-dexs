@@ -1,4 +1,4 @@
-# Project-1
+# Fetch Pool Feeds From Different Decentralized Exchanges Of Ethereum And Solana
 This project fetches pool data from different decentralized exchanges (DEXs) of Ethereum and Solana, and stores the data in Kafka. The project currently fetches data from three DEXs on Ethereum and three DEXs on Solana.
 
 ## Getting Started
